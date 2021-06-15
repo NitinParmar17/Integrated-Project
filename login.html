@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+</head>
+
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .bg-image {
+        background-image: url("https://www.patientbond.com/hs-fs/hubfs/PatientBond%20Insights%20Accelerator%20Home%20Slider_v2.jpg?width=1920&height=1079&name=PatientBond%20Insights%20Accelerator%20Home%20Slider_v2.jpg");
+        /* Add the blur effect */
+        /* filter: blur(8px);
+        -webkit-filter: blur(8px); */
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .center {
+        height: 550px;
+        width: 500px;
+        background-color: white;
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+
+        padding: 20px;
+        text-align: center;
+    }
+
+    .center_image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #idPassword {
+        margin-left: -30px;
+        margin-top: 4px;
+        cursor: pointer;
+    }
+
+    .side-align {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: 60px auto 0;
+    }
+
+    .error {
+        color: tomato;
+        font-size: 12px;
+        padding-top: 4px
+    }
+
+    .info {
+        border-color: #90185D;
+        color: dodgerblue;
+    }
+
+    .info:hover {
+        background: #90185D;
+        color: white;
+    }
+
+    #text_color {
+        color: #90185D;
+    }
+
+    #text_color:hover {
+        color: white;
+    }
+
+    #user_icon {
+        color: white;
+        margin-left: 3px;
+        margin-top: 9px;
+    }
+
+    #lock_icon {
+        color: white;
+        margin-left: 3px;
+        margin-top: 9px;
+    }
+
+    .div_icon {
+        background-color: #90185D;
+        height: 38px;
+        width: 30px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+
+    <!-- DIV -->
+    <div class="bg-image"></div>
+
+
+    <div class="center">
+        <!-- HEADER IMAGE -->
+        <div class="center_image"><img
+                src="https://image.pitchbook.com/gooerXzDbCMppYvswfAF1Hp18z11612455228604_200x200"></div>
+
+        <hr>
+        <!-- MAIN -->
+        <div ng-app="appLogin" ng-controller="loginController" class="container">
+            <form name="myForm">
+                <div class="login-container">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class="div_icon">
+                                <i class="fas fa-user" id="user_icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="email" name="email" ng-model="userEmail" required class="form-control"
+                                    placeholder="Enter Username">
+
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="div_icon">
+                                <i class="fa fa-lock" id="lock_icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <div class="side-align">
+                                    <input type="password" name="password" id="password" ng-model="userPassword"
+                                        required class="form-control" placeholder="Enter password">
+                                    <i class="bi bi-eye-slash" id="idPassword"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button ng-click="login()" class="btn info pull-right">
+                                    <span id="text_color">Login</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div ng-show="showError" class="alert alert-danger">Wrong Credentials!</div>
+
+                        </div>
+                    </div>
+                    <!-- <div ng-click="forgetPassword()" style="cursor: pointer;">Forgot Password ?</div> -->
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var app = angular.module('appLogin', []);
+
+    app.controller('loginController', function ($scope) {
+
+
+        var validUsers = [
+            { 'username': 'nitin@patientbond.com', 'password': 'nitin' },
+            { 'username': 'admin@patientbond.com', 'password': 'admin' }
+        ];
+
+        // set Error //
+        $scope.showError = false;
+        $scope.showSuccess = false;
+
+        //login function//
+        $scope.login = function () {
+            var flag = false;
+
+            if ($scope.userEmail && $scope.userPassword) {
+                for (var i in validUsers) {
+                    if ($scope.userEmail == validUsers[i].username && $scope.userPassword == validUsers[i].password) {
+                        flag = true;
+                        window.location.href = "index.html";
+                        break;
+                    }
+                    else {
+                        flag = false;
+                    }
+                }
+
+                //set error//
+                if (flag) {
+                    $scope.showError = false;
+                    $scope.showSuccess = true;
+                }
+                else {
+                    $scope.showError = true;
+                    $scope.showSuccess = false;
+                }
+            }
+
+        }
+        const idPassword = document.querySelector('#idPassword');
+        const password = document.querySelector('#password');
+        idPassword.addEventListener('click', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('bi-eye');
+        });
+
+    });
+</script>
